@@ -25,8 +25,15 @@ class TestsController < ApplicationController
   end
 
   # PATCH/PUT /tests/1
-  def update
-    render json: {status: 200}
+  def test
+    puts "##############################"
+    puts request.headers.sort.map { |k, v| logger.info "#{k}:#{v}" }
+    puts "##############################"
+    puts request.raw_post()
+    puts "##############################"
+    render status: 204
+    # render status: 400 
+    # render status: 500
   end
 
   # DELETE /tests/1
@@ -36,12 +43,12 @@ class TestsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_test
-      @test = Test.find(params[:id])
-    end
+    # def set_test
+    #   @test = Test.find(params[:id])
+    # end
 
-    # Only allow a trusted parameter "white list" through.
-    def test_params
-      params.fetch(:test, {})
-    end
+    # # Only allow a trusted parameter "white list" through.
+    # def test_params
+    #   params.fetch(:test, {})
+    # end
 end
